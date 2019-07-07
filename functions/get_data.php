@@ -108,3 +108,13 @@
         }
         
     }
+
+    function get_last_msg($src, $dest)
+    {
+        include("db.php");
+        $sql="SELECT * from msgs where (source_id ='$src' and dest_id = '$dest')
+                ORDER BY time DESC LIMIT 1;";
+        $msg = mysqli_fetch_assoc(mysqli_query($con,$sql));
+        $msg['time'] = date("H:i", strtotime($msg['time']));
+        return $msg;
+    }

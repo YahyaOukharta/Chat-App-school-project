@@ -20,7 +20,7 @@ if(isset($_POST['login']))
         $_SESSION['user_id'] =mysqli_fetch_assoc($result)['id'];
         change_user_state($_SESSION['user_id'],"online");
         $_SESSION['last_use']=time();
-        header("location: ../main.php");
+        header("location: ../chat.php");
     }
     else 
     {

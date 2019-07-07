@@ -1,4 +1,4 @@
-<?php 
+z<?php 
     session_start();
     
     include("functions/get_data.php");

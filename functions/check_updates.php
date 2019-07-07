@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("db.php");
     include("get_data.php");
 
@@ -7,13 +8,9 @@
 
     if(isset($_POST['get_last_msg']))
     {
-        $sql="SELECT * from msgs where (source_id ='$src' and dest_id = '$dest')
-                ORDER BY time DESC LIMIT 1;";
-        $msg = mysqli_fetch_assoc(mysqli_query($con,$sql));
-        $user = get_user_data($msg['source_id']);
-        echo date("H:i", strtotime($msg['time']))."  ";
-        echo $user['username']."<br>&emsp;";
-        echo $msg['content']."<br>"; 
+        $msgs = array();
+        array_push($msgs, get_last_msg($src,$dest));
+        display_msgs($msgs);
     }
     else {
         $sql="SELECT msg_id from msgs where (source_id ='$src' and dest_id = '$dest');";

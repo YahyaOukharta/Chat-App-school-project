@@ -76,7 +76,7 @@
       </div>
       <div class="type_msg">
         <div class="input_msg_write">
-          <form action="main.php?id=<?php echo $_GET['id'];?>" method="post">
+          <form action="chat.php?id=<?php echo $_GET['id'];?>" method="post">
           <input name="user_msg" type="text" class="write_msg" placeholder="Type a message" />
           <button name="new_msg" class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
           </form>
@@ -85,10 +85,43 @@
     </div>
   </div>
 </div>     
-  <script>
-    var chatbox = document.getElementById('chatbox');
-    chatbox.scrollTop = chatbox.scrollHeight;
+    <script>
+      var chatbox = document.getElementById('chatbox');
+      chatbox.scrollTop = chatbox.scrollHeight;
     </script> 
+        <?php if(isset($_GET['id'])){ ?>
+        <script>// script to reload page everytime there is a new message
+            var num = 0; 
+            var prev = 0;
+            setInterval(function(){
+                prev = num;
+                $.post("functions/check_updates.php",
+                    {   
+                        src : "<?php echo $_GET['id'];?>",
+                        dest : "<?php echo $_SESSION['user_id'];?>"
+                    },
+                    function(data,status)
+                    {
+                        num = parseInt(data);
+                        if(num > prev && prev > 0)
+                        {
+                            //Append new message
+                            $.post("functions/check_updates.php",
+                            {   
+                                src : "<?php echo $_GET['id'];?>",
+                                dest : "<?php echo $_SESSION['user_id'];?>",
+                                get_last_msg : 1
+                            },
+                            function(data,status)
+                            {
+                                $("#chatbox").append(data);
+                                chatbox.scrollTop = chatbox.scrollHeight;
+                            });
+                        }
+                    });
+            },500);
+        </script>
+    <?php } ?>
   </body>
 </html>
     
