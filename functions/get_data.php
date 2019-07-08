@@ -93,16 +93,22 @@
     {
         foreach ($users as $user) {
             $chat_state="";
+            $last_msg= get_last_msg($user['id'],$_SESSION['user_id']);
+
             if(isset($_GET['id']) && $user['id']==$_GET['id'])
                 $chat_state="active_chat";
-            echo"<div class='chat_list ".$chat_state."'>
+            if(!isset($last_msg['content']))
+            {      
+                $last_msg['content']="";
+                $last_msg['time']="";
+            }           
+             echo"<div class='chat_list ".$chat_state."'>
                 <a href='?id=".$user['id']."'>
                 <div class='chat_people'>
-                <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>
-                <div class='chat_ib'>
-                <h5>".$user['username']."<span class='chat_date'>Dec 25</span></h5>
-                <p>Test, which is a new approach to have all solutions 
-                astrology under one roof.</p>
+                <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='".$user['username']."'> </div>
+                <div class='chat_ib '>
+                <h5>".$user['username']."<span class='chat_date'>".$last_msg['time']."</span></h5>
+                <p>".$last_msg['content']."</p>
                 </div>
                 </div>
                 </a>

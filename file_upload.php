@@ -35,6 +35,7 @@
             else if(!mysqli_query($con,$sql2))
                 echo mysqli_error($con);
             echo "Success";
+            header("Location: chat.php?id=".$_GET['id']);
         }
     }
 ?>
