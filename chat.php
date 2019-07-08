@@ -39,7 +39,7 @@
       <div class="inbox_people">
         <div class="headind_srch">
                 <div class="recent_heading">
-                  <h4>Recent</h4>
+                  <h4>Online Users</h4>
                 </div>
                 <div class="srch_bar">
                   <div class="stylish-input-group">
@@ -76,6 +76,7 @@
         <div class="input_msg_write">
           <form action="chat.php?id=<?php echo $_GET['id'];?>" method="post">
           <input name="user_msg" type="text" class="write_msg" placeholder="Type a message" />
+          <a href="file_upload.php?id=<?php echo $_GET['id'];?>"><button class="msg_send_btn" type="button"><i class="fa fa-file" aria-hidden="true"></i></button></a>
           <button name="new_msg" class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
           </form>
         </div>
@@ -87,7 +88,7 @@
       var chatbox = document.getElementById('chatbox');
       chatbox.scrollTop = chatbox.scrollHeight;
     </script> 
-        <?php if(isset($_GET['id'])){ ?>
+    <?php if(isset($_GET['id'])){ ?>
         <script>// script to reload page everytime there is a new message
             var num = 0; 
             var prev = 0;

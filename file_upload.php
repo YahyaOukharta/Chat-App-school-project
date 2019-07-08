@@ -17,10 +17,10 @@
         $file_tmp =$_FILES['fileToUpload']['tmp_name'];
         $file_type=$_FILES['fileToUpload']['type'];
         
-        if($file_size > 2097152 || $file_size == 0 || isempty($file_type));
-           $errors[]='File size must be less than 2 MB';
+        if($file_size > 2097152 || $file_size == 0 || empty($file_type));
+           //$errors[]='File size must be less than 2 MB';
         
-        if(empty($errors)==true){
+        if(empty($errors)){
             move_uploaded_file($file_tmp,"uploaded_files/".$file_name);
             $content = $file_name;
             $src = $_SESSION['user_id'];
@@ -34,7 +34,7 @@
                 echo mysqli_error($con);
             else if(!mysqli_query($con,$sql2))
                 echo mysqli_error($con);
-           echo "Success";
+            echo "Success";
         }
     }
 ?>

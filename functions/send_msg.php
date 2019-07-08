@@ -1,6 +1,6 @@
 <?php
     include("db.php");
-    if(isset($_POST['new_msg']))
+    if(isset($_POST['new_msg']) && !empty($_POST['user_msg']))
     {
         $msg = $_POST['user_msg'];
         $src = $_SESSION['user_id'];

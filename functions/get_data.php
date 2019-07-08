@@ -63,6 +63,8 @@
                 $type=$file_data['file_type'];
                 $size=$file_data['file_size'];
                 $content = "FILE : ".$name." ,size : ".$size." ,type: ".$type." //// <a href='uploaded_files/" . $name . "'> CLICK TO DOWNLOAD</a>";          
+                if(strstr($type,"image"))
+                    $content=$content."<img src='uploaded_files/" . $name ."'>";
             }
             else 
                 $content = $msg['content'];

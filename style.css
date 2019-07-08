@@ -1,4 +1,5 @@
-.container{max-width:1170px; max-height :100%; margin:auto;}
+
+.container{max-width:100%; max-height :100%; margin:0;}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -109,7 +110,7 @@ img{ max-width:100%;}
   color: #4c4c4c;
   font-size: 15px;
   min-height: 48px;
-  width: 100%;
+  width: 85%;
 }
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
@@ -121,12 +122,12 @@ img{ max-width:100%;}
   cursor: pointer;
   font-size: 17px;
   height: 33px;
-  position: absolute;
+  position: relative;
   right: 0;
   top: 11px;
   width: 33px;
 }
-.messaging { padding: 0 0 50px 0;}
+.messaging { padding: 0; margin :0;}
 .msg_history {
   height: 85%;
   overflow-y: auto;
