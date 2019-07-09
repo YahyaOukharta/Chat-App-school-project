@@ -18,7 +18,7 @@
       
           <!-- Icon -->
           <div class="fadeIn first" >
-            <img src="chat.png" style="width:55%;" id="icon" alt="User Icon" />
+            <img src="icon.png" style="width:38%;" id="icon" alt="User Icon" />
           </div>
       
           <!-- Login Form -->
