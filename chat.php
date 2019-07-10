@@ -46,6 +46,7 @@
                     <input type="text" class="search-bar"  placeholder="Search" >
                     <span class="input-group-addon">
                     <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                    <a href="?logout=1"><img src="power-off.png" alt="disconnect"></a>
                     </span> 
                   </div>
                 </div>
