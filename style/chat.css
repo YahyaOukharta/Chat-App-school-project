@@ -1,8 +1,7 @@
-
-.container{max-width:100%; max-height :100%; margin:0;}
+.container{max-width:100%; max-height :100%; margin:0; padding:0}
 img{ max-width:100%;}
 .inbox_people {
-  background: #f8f8f8 none repeat scroll 0 0;
+  background: #f8f8f8 none repeat scroll 0 0; /* #f8f8f8 */
   float: left;
   overflow: hidden;
   width: 40%; border-right:1px solid #c4c4c4;
