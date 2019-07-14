@@ -13,7 +13,8 @@
     }
     else
         $_SESSION['last_use']= time();
-    
+    if(isset($_GET['id']) && $_GET['id'] == "")
+        header("location: chat.php"); 
     if(isset($_GET['logout']))
     { 
         change_user_state($_SESSION['user_id'],"offline");
@@ -75,10 +76,10 @@
       </div>
       <div class="type_msg">
         <div class="input_msg_write">
-          <form action="chat.php?id=<?php echo $_GET['id'];?>" method="post">
-          <input name="user_msg" type="text" class="write_msg" placeholder="Type a message" />
-          <a href="file_upload.php?id=<?php echo $_GET['id'];?>"><button class="msg_send_btn" type="button"><i class="fa fa-file" aria-hidden="true"></i></button></a>
-          <button name="new_msg" class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+          <form action="chat.php?id=<?php echo (isset($_GET['id'])==true?$_GET['id']:""); ?>" method="post">
+            <input name="user_msg" type="text" class="write_msg" placeholder="Type a message" />
+            <a href="file_upload.php?id=<?php echo $_GET['id'];?>"><button class="msg_send_btn" type="button"><i class="fa fa-file" aria-hidden="true"></i></button></a>
+            <button name="new_msg" class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
           </form>
         </div>
       </div>

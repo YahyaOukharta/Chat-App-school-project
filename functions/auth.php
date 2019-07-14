@@ -11,9 +11,11 @@ if(isset($_POST['login']))
 
     $pass = md5($pwd); //crypting password using md5 
     
-    $sql= "SELECT id FROM user WHERE username = '$username' AND password = '$pass'";
-    
-    $result = mysqli_query($con,$sql);
+    $sql= "SELECT id FROM user WHERE username = ? AND password = ?";
+    $stmt = mysqli_prepare($con,$sql);
+    mysqli_stmt_bind_param($stmt,"ss",$username,$pass);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) == 1){
         //credentials match , login succesful 
@@ -40,9 +42,12 @@ if(isset($_POST['register']))
     $email =mysqli_real_escape_string($con,$_POST['email']);
 
     //check if username or email already exist in database 
-    $sql = "SELECT id FROM user WHERE username = '$username' OR email = '$email'";
-    $result = mysqli_query($con,$sql);
-    
+    $sql = "SELECT id FROM user WHERE username = ? OR email = ?";
+    $stmt = mysqli_prepare($con,$sql);
+    mysqli_stmt_bind_param($stmt,"ss",$username,$email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
     if(mysqli_num_rows($result) != 0)
         //email or username already exist in database
         header("location: ../register.php?err=1");
@@ -55,8 +60,10 @@ if(isset($_POST['register']))
             //add user data to db
             $pwd = md5($pwd1); //turn password to md5 
             $sql="INSERT INTO user(username,password,email)
-                    VALUES ('$username','$pwd','$email')";
-            if(mysqli_query($con,$sql))
+                    VALUES (?,?,?)";
+            $stmt = mysqli_prepare($con,$sql);
+            mysqli_stmt_bind_param($stmt,"sss",$username,$pwd,$email);
+            if(mysqli_stmt_execute($stmt))
                 header("Location: ../index.php");
             else
                 echo "error : ".mysqli_error($con);
