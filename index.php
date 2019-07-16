@@ -8,13 +8,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="style/login.css">
+  <title>Se connecter - ChatApp</title>
 </head>
 <body>
     <div class="wrapper fadeInDown">
         <div id="formContent">
           <!-- Tabs Titles -->
-          <h2 class="active"> Sign In </h2>
-          <h2 class="inactive underlineHover"><a href="register.php">Register</a></h2>
+          <h2 class="active"> Se connecter </h2>
+          <h2 class="inactive underlineHover"><a href="register.php">S'inscrire</a></h2>
       
           <!-- Icon -->
           <div class="fadeIn first" >
@@ -26,17 +27,17 @@
               <div class="error">
                   <?php 
                       if(isset($_GET['err']))
-                          echo "Username and/or password invalid <br>";
+                          echo "Nom d'utilisateur ou/et mot de passe invalides <br>";
                   ?>
               </div>
-            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
-            <input type="password" id="password" class="fadeIn third" name="pwd" placeholder="password">
-            <input type="submit" name="login" class="fadeIn fourth" value="Log In">
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="Nom d'utilisateur">
+            <input type="password" id="password" class="fadeIn third" name="pwd" placeholder="Mot de passe">
+            <input type="submit" name="login" class="fadeIn fourth" value="Se Connecter">
           </form>
       
           <!-- Remind Passowrd -->
           <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            <a class="underlineHover" href="#">Mot de passe oublié?</a>
           </div>
       
         </div>

@@ -32,6 +32,9 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" href="style/chat.css">
+  <title>  
+    <?php if(isset($_GET['id'])) echo get_user_data($_GET['id'])['username']." | ";?>ChatApp
+  </title>
 </head>
 <body>
 <div class="container">
@@ -40,14 +43,14 @@
       <div class="inbox_people">
         <div class="headind_srch">
                 <div class="recent_heading">
-                  <h4>Online Users</h4>
+                  <h4>Utilisateurs en ligne</h4>
                 </div>
                 <div class="srch_bar">
                   <div class="stylish-input-group">
-                    <input type="text" class="search-bar"  placeholder="Search" >
+                    <input type="text" class="search-bar"  placeholder="Recherche" >
                     <span class="input-group-addon">
                     <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                    <a href="?logout=1"><img src="power-off.png" alt="disconnect"></a>
+                    <a href="?logout=1"><img src="power-off.png" alt="Deconnexion"></a>
                     </span> 
                   </div>
                 </div>
@@ -67,18 +70,18 @@
               if(isset($_GET['id'])){
                 $msgs = get_msgs($_GET['id'],$_SESSION['user_id']);
                 if(!$msgs)
-                  echo 'No messages sent yet, type a message in the input box below and press enter or the submit button';
+                  echo "Aucun message, saisissez un message dans la barre de message en appuyer sur le bouton d'envoi.";
                 else
                   display_msgs($msgs);
               }else
-                echo "Click on an online user to start chatting !";
+                echo "Clickez sur un utilisateur en ligne pour commencer à discuter !";
             ?>
       </div>
       <div class="type_msg">
         <div class="input_msg_write">
           <form action="chat.php?id=<?php echo (isset($_GET['id'])==true?$_GET['id']:""); ?>" method="post">
-            <input name="user_msg" type="text" class="write_msg" placeholder="Type a message" />
-            <a href="file_upload.php?id=<?php echo $_GET['id'];?>"><button class="msg_send_btn" type="button"><i class="fa fa-file" aria-hidden="true"></i></button></a>
+            <input name="user_msg" type="text" class="write_msg" placeholder="Saisissez un message" />
+            <a href="<?php if(isset($_GET['id'])) echo "file_upload.php?id=".$_GET['id']; else echo "#";?>"><button class="msg_send_btn" type="button"><i class="fa fa-file" aria-hidden="true"></i></button></a>
             <button name="new_msg" class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
           </form>
         </div>

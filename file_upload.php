@@ -46,7 +46,7 @@
  
 </head>
 <body>
-    <h4>Upload a file and click the button to send it to <?php echo $dest_username;?></h1>
+    <h4>Envoyer une image ou bien un fichier à <?php echo $dest_username;?></h1>
     <br><br>
     <form action="file_upload.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
         <input type="file" name="fileToUpload" >

@@ -62,7 +62,7 @@
                 $name=$file_data['file_name'];
                 $type=$file_data['file_type'];
                 $size=$file_data['file_size'];
-                $content = "FILE : ".$name." ,size : ".$size." ,type: ".$type." //// <a href='uploaded_files/" . $name . "'> CLICK TO DOWNLOAD</a>";          
+                $content = "FICHIER : ".$name." | Taille : ".($size/1000)." kb | Type: ".$type." ||| <a href='uploaded_files/" . $name . "' style='text-decoration:none;color:#FFB12E;'> Cliquez pour telecharger le fichier  </a>";          
                 if(strstr($type,"image"))
                     $content=$content."<img src='uploaded_files/" . $name ."'>";
             }
